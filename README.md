@@ -1,4 +1,15 @@
-Estrutura: https://medium.com/@amirm.lavasani/how-to-structure-your-fastapi-projects-0219a6600a8f
+Descrição da Estrutura:
+main.py: O ponto de entrada da aplicação FastAPI.
+core/: Contém as configurações centrais do projeto, como variáveis de ambiente e segurança.
+api/: Contém as rotas e suas dependências. Aqui, cada versão da API (ex: v1, v2) pode ter seus próprios módulos de rotas.
+models/: Modelos de dados (ex: SQLAlchemy ou Pydantic) que representam as tabelas e/ou esquemas da sua aplicação.
+db/: Configurações relacionadas ao banco de dados, como conexão e manipulação de sessão.
+schemas/: Esquemas de validação com Pydantic para definir como os dados de entrada/saída são estruturados.
+services/: Lógica de negócio separada das rotas. Cada serviço pode manipular operações complexas de maneira organizada.
+utils/: Funções utilitárias, helpers que não pertencem a um domínio específico (ex: funções genéricas de envio de e-mail, formatação).
+tests/: Testes unitários e de integração para a aplicação.
+
+------
 
 Desafio: Criar uma API para um sistema de gerenciamento de tarefas
 Descrição do Desafio

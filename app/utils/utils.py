@@ -1,7 +1,5 @@
 from passlib.context import CryptContext
 
-from app.models.user import UserModel
-
 
 class Password:
     def __init__(self):
