@@ -3,17 +3,32 @@ from app.models.user import UserModel
 from app.schemas.user import UserSchema
 
 
-class User:
+class UserCRUD:
     def __init__(self):
         pass
 
-    def create(self, db_session: Session, data: UserSchema):
-        db_user = UserModel(
+    def create(self, db: Session, data: UserSchema):
+        user = UserModel(
             username=data.username,
-            email=data.email,
-            hashed_password=data.password,
+            hashed_password=data.hashed_password,
         )
-        db_session.add(db_user)
-        db_session.commit()
-        db_session.refresh(db_user)
-        return db_user
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+        return user
+
+    def get_by_username(self, db: Session, data: UserSchema):
+        user = db.query(UserModel).filter(UserModel.username == data.username).first()
+        return user
+
+    def update(self, db: Session, data: UserSchema, user: UserModel):
+        user.username = data.username
+        user.hashed_password = data.hashed_password
+        db.commit()
+        db.refresh(user)
+
+    def delete(self, db: Session, data: UserSchema, user: UserModel):
+        db.query(UserModel).filter(UserModel.username == data.username).delete(
+            synchronize_session=False
+        )
+        db.commit()

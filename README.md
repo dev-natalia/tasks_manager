@@ -7,6 +7,7 @@ db/: Configurações relacionadas ao banco de dados, como conexão e manipulaç�
 schemas/: Esquemas de validação com Pydantic para definir como os dados de entrada/saída são estruturados.
 services/: Lógica de negócio separada das rotas. Cada serviço pode manipular operações complexas de maneira organizada.
 utils/: Funções utilitárias, helpers que não pertencem a um domínio específico (ex: funções genéricas de envio de e-mail, formatação).
+external_services/: Relacionado a serviços externos, como envio de e-mail
 tests/: Testes unitários e de integração para a aplicação.
 
 ------
