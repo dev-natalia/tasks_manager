@@ -12,8 +12,3 @@ class Password:
 
     def verify_password(self, plain_password: str, hashed_password: str):
         return self.__pwd_context.verify(plain_password, hashed_password)
-
-    def authenticate_user(self, user: UserModel, password: str):
-        if not self.verify_password(password, user.hashed_password):
-            return False
-        return user

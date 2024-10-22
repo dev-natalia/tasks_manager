@@ -8,15 +8,12 @@ class User:
         pass
 
     def create(self, db_session: Session, data: UserSchema):
-        # TODO: ADICIONAR CRIAÇÃO DE HASH COMO CONFIG DE USERSCHEMA
         db_user = UserModel(
             username=data.username,
             email=data.email,
-            hashed_password=data.hashed_password,
+            hashed_password=data.password,
         )
         db_session.add(db_user)
         db_session.commit()
         db_session.refresh(db_user)
-        # TODO: ADICIONAR EXCEPTION PARA CASO USERNAME JÁ EXISTA
-
         return db_user
